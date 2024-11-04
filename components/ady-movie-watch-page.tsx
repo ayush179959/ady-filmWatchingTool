@@ -99,8 +99,8 @@ export function AdyMovieWatchPage() {
         }
         
         .dark {
-          --background: 240 10% 3.9%;
-          --foreground: 0 0% 98%;
+          --background: 240 0% 20%;
+          --foreground:  0% 98%;
           --card: 240 10% 3.9%;
           --card-foreground: 0 0% 98%;
           --popover: 240 10% 3.9%;
@@ -120,9 +120,9 @@ export function AdyMovieWatchPage() {
           --ring: 240 4.9% 83.9%;
         }
       `}</style>
-      <div className="container mx-auto p-4 dark:bg-gray-800 dark:text-white transition-colors duration-200">
+      <div className="container mx-auto p-4 dark:bg-transparent dark:text-white transition-colors duration-200">
         <header className="flex justify-between items-center mb-4">
-          <h1 className="text-4xl font-bold font-['Orbitron'] bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+          <h1 className="text-4xl font-bold font-['Orbitron'] bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-500">
             ADY
           </h1>
           <Button variant="ghost" size="icon" onClick={toggleDarkMode}>
@@ -141,7 +141,7 @@ export function AdyMovieWatchPage() {
           setUserName(e.target.value);
         }
       }}
-      className="w-64"
+      className="w-64 border-black dark:border-white"
     />
     {userName && (
       <div className="flex flex-col items-center space-y-2">
@@ -153,7 +153,7 @@ export function AdyMovieWatchPage() {
 )  : (
           <main className="flex flex-col lg:flex-row gap-4">
             <div className="lg:w-3/4">
-              <div className="aspect-video bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+              <div className="aspect-video bg-gray-200 dark:bg-zinc-800 rounded-lg flex items-center justify-center">
                 <p className="text-gray-500 dark:text-gray-400">Video Player Placeholder</p>
               </div>
             </div>
@@ -163,21 +163,21 @@ export function AdyMovieWatchPage() {
             </div>
             
             <div className="lg:w-1/4 flex flex-col">
-              <div className="bg-gray-100 dark:bg-gray-700 rounded-lg p-4 mb-4 flex-grow overflow-y-auto h-64 lg:h-auto">
+              <div className="bg-gray-100 dark:bg-zinc-600 rounded-lg p-4 mb-4 flex-grow overflow-y-auto h-64 lg:h-auto">
                 {/* Chat messages would be displayed here */}
                 <p className="text-gray-500 dark:text-gray-400">Chat messages appear here</p>
               </div>
               
               <div className="flex flex-wrap gap-2 mb-4">
-                <Button variant={voiceChat ? "default" : "outline"} onClick={toggleVoiceChat}>
+                <Button variant={voiceChat ? "default" : "outline"} onClick={toggleVoiceChat} className='dark:border-gray-400'>
                   {voiceChat ? <MicOff className="h-4 w-4 mr-2" /> : <Mic className="h-4 w-4 mr-2" />}
                   {voiceChat ? 'Mute' : 'Unmute'}
                 </Button>
-                <Button variant="outline" className="flex-grow">
+                <Button variant="outline" className="flex-grow dark:border-gray-400">
                   <Users className="h-4 w-4 mr-2" />
                   Room: {roomKey}
                 </Button>
-                <Button variant="outline" onClick={copyRoomKey}>
+                <Button variant="outline" onClick={copyRoomKey} className='dark:border-gray-400'>
                   {copied ? <Check className="h-4 w-4 mr-2" /> : <Copy className="h-4 w-4 mr-2" />}
                   {copied ? 'Copied!' : 'Copy Key'}
                 </Button>
@@ -189,7 +189,7 @@ export function AdyMovieWatchPage() {
                   placeholder="Type a message..."
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="flex-grow"
+                  className="flex-grow dark:border-gray-400"
                 />
                 <Button type="submit">
                   <Send className="h-4 w-4" />
